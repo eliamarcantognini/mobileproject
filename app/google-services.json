@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "25709387094",
+    "firebase_url": "https://mobileproject-4838f.firebaseio.com",
+    "project_id": "mobileproject-4838f",
+    "storage_bucket": "mobileproject-4838f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25709387094:android:8443f78c32b3cd35738af7",
+        "android_client_info": {
+          "package_name": "com.marca.mobileproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25709387094-fbtpn8q5i0unh820nt0g0d0dd196v1s2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marca.mobileproject",
+            "certificate_hash": "2c985a52ea93379aca3c8a3f855bfe81c59fa2e5"
+          }
+        },
+        {
+          "client_id": "25709387094-d3mqjpae318lr6ek9r2cu77q4qjf8d7h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaXJRcYXtTiBeaeeHevGnyoGILL66zyF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25709387094-d3mqjpae318lr6ek9r2cu77q4qjf8d7h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

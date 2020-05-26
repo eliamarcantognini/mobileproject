@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_timetable"
+        android:icon="@drawable/ic_timetables_24dp"
+        android:title="@string/timetables" />
+
+    <item
+        android:id="@+id/navigation_secretary"
+        android:icon="@drawable/ic_secretary_24dp"
+        android:title="@string/secretary" />
+
+    <item
+        android:id="@+id/navigation_contact"
+        android:icon="@drawable/ic_contact_24dp"
+        android:title="@string/contact" />
+
+</menu>
