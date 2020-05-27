@@ -8,4 +8,5 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|end"
     android:layout_margin="16dp"
+    app:backgroundTint="@color/primaryDarkColor"
     app:srcCompat="@drawable/ic_favorite_border_24dp" />

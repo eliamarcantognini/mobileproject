@@ -5,6 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <include
+        android:id="@+id/includeToolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/first_const"
         android:layout_width="match_parent"
@@ -12,7 +19,7 @@
         app:layout_constraintBottom_toTopOf="@id/second_const"
         app:layout_constraintEnd_toEndOf="@id/parent_const"
         app:layout_constraintStart_toStartOf="@id/parent_const"
-        app:layout_constraintTop_toTopOf="@id/parent_const">
+        app:layout_constraintTop_toBottomOf="@id/includeToolbar">
 
         <TextView
             android:id="@+id/textView1"

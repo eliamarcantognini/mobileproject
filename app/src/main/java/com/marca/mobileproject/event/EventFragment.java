@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -21,6 +22,7 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 import com.marca.mobileproject.database.event.Event;
 import com.marca.mobileproject.database.event.EventViewModel;
 
@@ -33,7 +35,6 @@ public class EventFragment extends Fragment {
     private EventViewModel eventViewModel;
     private EventCardAdapter adapter;
     private FloatingActionButton fab;
-//    private OnClickListener listener;
 
 
     @Nullable
@@ -51,7 +52,6 @@ public class EventFragment extends Fragment {
         if (activity != null) {
             List<EventDay> dayEvents = new ArrayList<>();
             CalendarView calendarView = activity.findViewById(R.id.calendarView);
-
             fab = activity.findViewById(R.id.fab_fav);
 
             RecyclerView recyclerView = activity.findViewById(R.id.recycler);

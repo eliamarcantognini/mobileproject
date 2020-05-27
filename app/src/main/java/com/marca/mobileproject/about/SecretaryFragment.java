@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,10 +19,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 
 public class SecretaryFragment extends Fragment {
 
     private static final String SECRETARY_PATH = "secretary/";
+    private static final String TITLE = "Secretary";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(SECRETARY_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
     @Nullable
@@ -41,12 +45,18 @@ public class SecretaryFragment extends Fragment {
             friday = activity.findViewById(R.id.fridayTextViewSecretary);
             saturday = activity.findViewById(R.id.saturdayTextViewSecretary);
             sunday = activity.findViewById(R.id.sundayTextViewSecretary);
-
+//            Toolbar toolbar = activity.findViewById(R.id.app_bar);
+//            toolbar.setTitle(TITLE);
             initListeners();
 
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utils.setToolbarTitle(getActivity(), TITLE);
+    }
 
     private void initListeners() {
         /**

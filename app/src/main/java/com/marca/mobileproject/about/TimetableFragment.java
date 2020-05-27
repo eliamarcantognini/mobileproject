@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -17,11 +19,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 
 
 public class TimetableFragment extends Fragment {
 
     private static final String TIMETABLES_PATH = "timetables/";
+    private static final String TITLE = "Timetable";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(TIMETABLES_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
@@ -44,10 +48,17 @@ public class TimetableFragment extends Fragment {
             friday = activity.findViewById(R.id.fridayTextView);
             saturday = activity.findViewById(R.id.saturdayTextView);
             sunday = activity.findViewById(R.id.sundayTextView);
-
+//            Toolbar toolbar = activity.findViewById(R.id.app_bar);
+//            toolbar.setTitle(TITLE);
             initListeners();
 
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utils.setToolbarTitle(getActivity(), TITLE);
     }
 
 

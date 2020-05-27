@@ -3,7 +3,6 @@ package com.marca.mobileproject.about;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +11,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -20,21 +21,25 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.marca.mobileproject.MainActivity;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 
 public class ContactFragment extends Fragment implements com.google.android.gms.maps.OnMapReadyCallback{
 
     private static final String INFO_PATH = "info/";
+    private static final String TITLE = "Contact";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(INFO_PATH);
     private GoogleMap map;
     private MapView mapView;
     private TextView tel, cap, city, street, mobile;
-    private ImageButton mobileBtn, telBtn;
+    private ImageButton mobileBtn, telBtn, msgBtn;
 
     @Nullable
     @Override
@@ -57,6 +62,8 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
             mobile = activity.findViewById(R.id.mobile);
             mobileBtn = activity.findViewById(R.id.mobile_button);
             telBtn = activity.findViewById(R.id.call_button);
+            msgBtn = activity.findViewById(R.id.msg_button);
+
             initListeners();
 
 
@@ -64,7 +71,12 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
             mapView.getMapAsync(this);
             mapView.onResume();
         }
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        Utils.setToolbarTitle(getActivity(), TITLE);
     }
 
     @Override
@@ -162,5 +174,13 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
                 startActivity(intent);
             }
         });
+        msgBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("sms:" + mobile.getText()))
+                    .putExtra("sms_body", "Hi, my name is");
+            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+                startActivity(intent);
+            }
+        });
+
     }
 }

@@ -6,11 +6,16 @@ import android.transition.Slide;
 import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -23,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +36,7 @@ import java.util.Objects;
 public class NewsFragment extends Fragment implements OnNewsListener{
 
     private static final String NEWS_PATH = "news/";
+    private static final String TITLE = "News";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(NEWS_PATH);
     private RecyclerView recyclerView;
     private NewsCardAdapter adapter;
@@ -49,26 +56,42 @@ public class NewsFragment extends Fragment implements OnNewsListener{
         FragmentActivity activity = getActivity();
 
         if (activity != null) {
-
             initRecyclerView(activity);
+            Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            setHasOptionsMenu(true);
             db.orderByChild("date").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
                     final GenericTypeIndicator<List<News>> t = new GenericTypeIndicator<List<News>>() {};
-
                     news = dataSnapshot.getValue(t);
                     adapter.setData(news);
                 }
-
                 @Override
                 public void onCancelled(DatabaseError error) {
-                    // Failed to read value
                     Log.d("ONCANCELLED", "Failed to read value.", error.toException());
                 }
             });
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.toolbar_menu, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        androidx.appcompat.widget.SearchView searchView = (androidx.appcompat.widget.SearchView) item.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adapter.getFilter().filter(newText);
+                return true;
+            }
+        });
     }
 
     private void initRecyclerView(final Activity activity) {
@@ -76,8 +99,6 @@ public class NewsFragment extends Fragment implements OnNewsListener{
         recyclerView.setHasFixedSize(true);
         adapter = new NewsCardAdapter(this);
         recyclerView.setAdapter(adapter);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
-//        recyclerView.setLayoutManager(layoutManager);
     }
 
     /**
@@ -90,7 +111,6 @@ public class NewsFragment extends Fragment implements OnNewsListener{
         final CardView cardView = view.findViewById(R.id.news_card);
         final View expandableView = cardView.findViewById(R.id.expandable_view);
 
-        //transition to show the hidden layout of the card clicked
         TransitionManager.beginDelayedTransition(cardView, new Slide());
         expandableView.setVisibility(
                 expandableView.getVisibility() == View.GONE ? View.VISIBLE : View.GONE );
