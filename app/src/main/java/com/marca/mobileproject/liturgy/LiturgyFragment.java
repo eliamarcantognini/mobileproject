@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +20,7 @@ import com.marca.mobileproject.Utils;
 public class LiturgyFragment extends Fragment {
 
     private static final String TITLE = "Liturgy";
+    private static WebView webView;
 
     @Nullable
     @Override
@@ -32,6 +36,19 @@ public class LiturgyFragment extends Fragment {
         FragmentActivity activity = getActivity();
         if (activity != null) {
             Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            webView = activity.findViewById(R.id.webview);
+            webView.getSettings().setJavaScriptEnabled(true);
+            webView.setVisibility(View.INVISIBLE);
+            webView.setWebViewClient(new LiturgyWebClient());
+            webView.addJavascriptInterface(new LiturgyJavascriptInterface(), "CallToAnAndroidFunction");
+            webView.loadUrl("https://www.chiesacattolica.it/liturgia-del-giorno/");
+        }
+    }
+
+    private class LiturgyJavascriptInterface {
+        @JavascriptInterface
+        public void setVisible() {
+            getActivity().runOnUiThread((Runnable) () -> webView.setVisibility(View.VISIBLE));
         }
     }
 }

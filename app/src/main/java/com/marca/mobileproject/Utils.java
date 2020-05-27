@@ -17,25 +17,21 @@ public class Utils {
     static final String LITURGYFRAGMENT = "LiturgyFragment";
     static final String HOURSFRAGMENT = "HoursFragment";
     static final String NEWSFRAGMENT = "NewsFragment";
-    static final String CONTACT = "Contact";
-    static final String SECRETARY = "Secretary";
-    static final String TIMETABLE = "Timetable";
+    private static final String CONTACT = "Contact";
+    private static final String SECRETARY = "Secretary";
+    private static final String TIMETABLE = "Timetable";
 
     public static void replaceFragment(final Fragment fragment, final String tag, final FragmentActivity activity){
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
-        // Replace whatever is in the fragment_container view with this fragment,
-        // and add the transaction to the back stack so the user can navigate back
         transaction.replace(R.id.fragment_container, fragment, tag);
 
-        //to go back to the HomeFragment when back is clicked
         if (fragment instanceof HomeFragment) {
             transaction.addToBackStack(null);
         } else {
             transaction.addToBackStack(HOMEFRAGMENT);
         }
 
-        // Commit the transaction
         transaction.commit();
     }
 

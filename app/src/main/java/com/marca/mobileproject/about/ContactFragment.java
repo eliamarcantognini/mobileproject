@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.appbar.AppBarLayout;
@@ -84,8 +85,15 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
         this.map = googleMap;
         final LatLng pos = new LatLng(4.4147757E01, 1.223517E01);
         if (map != null) {
-            map.addMarker(new MarkerOptions().position(pos)).setTitle("Lol");
+            map.addMarker(new MarkerOptions().position(pos));
             map.moveCamera(CameraUpdateFactory.newLatLng(pos));
+            map.animateCamera(CameraUpdateFactory.newCameraPosition(
+                                                    CameraPosition.builder()
+                                                            .target(pos)
+                                                            .zoom(17)
+                                                            .bearing(90)
+                                                            .tilt(40)
+                                                            .build()));
         }
     }
 
