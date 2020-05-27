@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
-import com.marca.mobileproject.firebase.News;
 
 import java.util.List;
 import java.util.Objects;

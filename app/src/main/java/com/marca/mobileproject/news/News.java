@@ -1,4 +1,4 @@
-package com.marca.mobileproject.firebase;
+package com.marca.mobileproject.news;
 
 import java.util.Date;
 

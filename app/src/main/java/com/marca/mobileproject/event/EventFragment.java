@@ -33,7 +33,7 @@ public class EventFragment extends Fragment {
     private EventViewModel eventViewModel;
     private EventCardAdapter adapter;
     private FloatingActionButton fab;
-    private OnClickListener listener;
+//    private OnClickListener listener;
 
 
     @Nullable
@@ -63,14 +63,16 @@ public class EventFragment extends Fragment {
 
 
             /**
-             *
+             * Date click listener
              */
             calendarView.setOnDayClickListener(eventDay -> {
                 eventViewModel.getEventsOfDay(eventDay.getCalendar()).observe(activity, events -> {
                     if (!events.isEmpty()) {
+                        fab.setVisibility(View.VISIBLE);
                         fab.setClickable(true);
                         addListener(events);
                     } else {
+                        fab.setVisibility(View.INVISIBLE);
                         fab.setClickable(false);
                     }
                     adapter.setData(events);
@@ -92,7 +94,6 @@ public class EventFragment extends Fragment {
     private void addListener(final List<Event> events) {
 
         fab.setOnClickListener(v -> {
-            Log.d("LISTENER", "ssss");
             for (Event event : events) {
                 Intent intent = new Intent(Intent.ACTION_INSERT);
                 intent.setType("vnd.android.cursor.item/event");

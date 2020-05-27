@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.marca.mobileproject.R;
-import com.marca.mobileproject.firebase.News;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

@@ -13,12 +13,20 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = ["room.schemaLocation":
-                                     "$projectDir/schemas".toString()]
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                arguments = ["room.schemaLocation":
+//                                     "$projectDir/schemas".toString()]
+//            }
+//        }
+
+        def secretsProperties = new Properties()
+        if (rootProject.file("secrets.properties").exists()) {
+            rootProject.file("secrets.properties")?.withInputStream {
+                secretsProperties.load(it)
             }
         }
+        resValue "string", "google_maps_key", (secretsProperties["GOOGLE_MAPS_API_KEY"] ?: "")
 
     }
 
@@ -63,5 +71,6 @@ dependencies {
 
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
     implementation 'androidx.fragment:fragment-ktx:1.2.4'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
 }
