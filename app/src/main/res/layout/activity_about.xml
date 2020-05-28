@@ -20,8 +20,8 @@
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabIndicatorColor="@color/primaryDarkColor"
         android:layout_gravity="bottom"
         app:tabTextColor="@color/primaryTextColor"
-        android:background="@color/primaryColor"
-        app:tabSelectedTextColor="@color/secondaryTextColor" />
+        android:background="@color/primaryColor"/>
 </LinearLayout>

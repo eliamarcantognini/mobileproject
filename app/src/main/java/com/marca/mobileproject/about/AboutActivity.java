@@ -30,7 +30,7 @@ public class AboutActivity extends AppCompatActivity {
                     tab.setIcon(R.drawable.ic_secretary_24dp);
                     break;
                 case 2:
-                    tab.setIcon(R.drawable.ic_contact_dark_24dp);
+                    tab.setIcon(R.drawable.ic_contact_light_24dp);
                 break;
             }
         }).attach();

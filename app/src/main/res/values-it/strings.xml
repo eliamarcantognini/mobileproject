@@ -35,4 +35,8 @@
     <string name="medium">Ora media</string>
     <string name="vesper">Vespri</string>
     <string name="compline">Compieta</string>
+    <string name="news_title">"Titolo: "</string>
+    <string name="news_description">Descrizione:</string>
+    <string name="news_date">Data:</string>
+    <string name="news_time">Orario:</string>
 </resources>

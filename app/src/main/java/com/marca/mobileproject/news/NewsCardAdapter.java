@@ -1,5 +1,6 @@
 package com.marca.mobileproject.news;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,6 +73,22 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardHolder> implem
         holder.date.setText(sdf.format(date));
         holder.title.setText(currentNews.getTitle());
         holder.description.setText(currentNews.getDescription());
+        holder.shareBtn.setOnClickListener(v -> {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    v.getContext().getString(R.string.news_title) + " "
+                            + currentNews.getTitle() + "\n"
+                            + v.getContext().getString(R.string.news_description) + " " +
+                    currentNews.getDescription() +
+                            "\n" + v.getContext().getString(R.string.news_date) + " " +
+                    sdf.format(currentNews.getDate()));
+
+            sendIntent.setType("text/plain");
+            if (v.getContext() != null &&
+                    sendIntent.resolveActivity(v.getContext().getPackageManager()) != null) {
+                v.getContext().startActivity(Intent.createChooser(sendIntent, null));
+            }
+        });
     }
 
     @Override

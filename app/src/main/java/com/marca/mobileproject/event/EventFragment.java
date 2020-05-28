@@ -6,10 +6,10 @@ import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,6 +20,7 @@ import com.applandeo.materialcalendarview.CalendarView;
 import com.applandeo.materialcalendarview.EventDay;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.marca.mobileproject.R;
+import com.marca.mobileproject.Utils;
 import com.marca.mobileproject.database.event.Event;
 import com.marca.mobileproject.database.event.EventViewModel;
 
@@ -48,7 +49,7 @@ public class EventFragment extends Fragment {
             ArrayList<EventDay> dayEvents = new ArrayList<>();
             CalendarView calendarView = activity.findViewById(R.id.calendarView);
             fab = activity.findViewById(R.id.fab_fav);
-
+            Utils.setUpToolbar((AppCompatActivity) activity, activity.getString(R.string.event));
             RecyclerView recyclerView = activity.findViewById(R.id.recycler);
             recyclerView.setHasFixedSize(true);
             adapter = new EventCardAdapter();

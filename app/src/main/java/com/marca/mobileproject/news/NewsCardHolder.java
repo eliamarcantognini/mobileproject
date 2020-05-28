@@ -1,6 +1,7 @@
 package com.marca.mobileproject.news;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ public class NewsCardHolder extends RecyclerView.ViewHolder implements View.OnCl
     TextView title;
     TextView description;
     TextView date;
+    ImageView shareBtn;
     private OnNewsListener newsListener;
 
     NewsCardHolder(@NonNull View itemView, final OnNewsListener listener) {
@@ -21,6 +23,7 @@ public class NewsCardHolder extends RecyclerView.ViewHolder implements View.OnCl
         this.description = itemView.findViewById(R.id.news_description);
         this.date = itemView.findViewById(R.id.news_date);
         this.newsListener = listener;
+        this.shareBtn = itemView.findViewById(R.id.shareIcon);
         itemView.setOnClickListener(this);
     }
 
