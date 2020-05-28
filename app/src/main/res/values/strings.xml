@@ -1,43 +1,43 @@
 <resources>
-    <string name="app_name">MobileProject</string>
-    <string name="santa_croce">Santa Croce</string>
+    <string name="app_name" translatable="false">MobileProject</string>
+    <string name="santa_croce" translatable="false">Santa Croce</string>
     <string name="event">Event</string>
     <string name="timetables">Timetable</string>
     <string name="groups">Group</string>
     <string name="liturgy">Liturgy</string>
     <string name="hours">Hours</string>
     <string name="news">News</string>
-    <string name="lorem_ipsum">Lorem Ipsum</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="lorem_ipsum" translatable="false">Lorem Ipsum</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
+    <string name="title_home" translatable="false">Home</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="times">Times</string>
     <string name="secretary">Secretary</string>
     <string name="contact">Contact</string>
-    <string name="title_activity_about">AboutActivity</string>
+    <string name="title_activity_about" translatable="false">AboutActivity</string>
     <string name="about">About</string>
     <string name="description">Description</string>
-    <string name="expand">expand</string>
+    <string name="expand" translatable="false">expand</string>
     <string name="monday">Monday</string>
-    <string name="time_placeholder">00:00</string>
+    <string name="time_placeholder" translatable="false">00:00</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
-    <string name="background">background</string>
-    <string name="_0721">0721</string>
-    <string name="cap">Cap</string>
+    <string name="background" translatable="false">background</string>
+    <string name="_0721" translatable="false">0721</string>
+    <string name="cap" translatable="false">Cap</string>
     <string name="city">City</string>
     <string name="where">Where</string>
     <string name="street">Street</string>
     <string name="telephone">Telephone</string>
     <string name="mobile">Mobile</string>
-    <string name="_3317">3317</string>
-    <string name="call_mobile_phone">call_mobile_phone</string>
-    <string name="call_telephone">call_telephone</string>
+    <string name="_3317" translatable="false">3317</string>
+    <string name="call_mobile_phone" translatable="false">call_mobile_phone</string>
+    <string name="call_telephone" translatable="false">call_telephone</string>
     <string name="search">Search</string>
     <string name="action_share">Share</string>
     <string name="action_upload">Upload</string>

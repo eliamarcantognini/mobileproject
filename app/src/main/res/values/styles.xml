@@ -2,7 +2,8 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+
+        <item name="cornerRadius">16dp</item>
     </style>
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
@@ -41,4 +42,5 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/normal_padding</item>
     </style>
+
 </resources>

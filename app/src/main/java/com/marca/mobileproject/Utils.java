@@ -16,9 +16,6 @@ public class Utils {
     static final String GROUPFRAGMENT = "GroupFragment";
     static final String LITURGYFRAGMENT = "LiturgyFragment";
     static final String NEWSFRAGMENT = "NewsFragment";
-    private static final String CONTACT = "Contact";
-    private static final String SECRETARY = "Secretary";
-    private static final String TIMETABLE = "Timetable";
 
     static void replaceFragment(final Fragment fragment, final String tag, final FragmentActivity activity){
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
@@ -38,7 +35,9 @@ public class Utils {
         Toolbar toolbar = activity.findViewById(R.id.app_bar);
         toolbar.setTitle(title);
         activity.setSupportActionBar(toolbar);
-        if (title.equals(CONTACT) || title.equals(SECRETARY) || title.equals(TIMETABLE)) {
+        if (title.equals(activity.getString(R.string.contact)) ||
+                title.equals(activity.getString(R.string.secretary)) ||
+                title.equals(activity.getString(R.string.timetables))) {
             Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         } else {
             // Back listener for fragments of main activity

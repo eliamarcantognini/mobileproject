@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="event">Evento</string>
+    <string name="timetables">Orario</string>
+    <string name="groups">Gruppo</string>
+    <string name="liturgy">Liturgia</string>
+    <string name="hours">Ore</string>
+    <string name="news">Novità</string>
+    <string name="secretary">Secreteria</string>
+    <string name="times">Orari</string>
+    <string name="contact">Contatti</string>
+    <string name="about">Info</string>
+    <string name="title_notifications">Notifiche</string>
+    <string name="description">Descrizione</string>
+    <string name="monday">Lunedì</string>
+    <string name="tuesday">Martedì</string>
+    <string name="wednesday">Mercoledì</string>
+    <string name="thursday">Giovedì</string>
+    <string name="friday">Venerdì</string>
+    <string name="saturday">Sabato</string>
+    <string name="sunday">Domenica</string>
+    <string name="city">Città</string>
+    <string name="where">Dove</string>
+    <string name="street">Via</string>
+    <string name="telephone">Telefono</string>
+    <string name="mobile">Cellulare</string>
+    <string name="search">Cerca</string>
+    <string name="action_share">Condividi</string>
+    <string name="action_upload">Carica</string>
+    <string name="action_copy">Copia</string>
+    <string name="action_print">Stampa</string>
+    <string name="invitatory">Invitatorio</string>
+    <string name="lectures_office">Ufficio delle Letture</string>
+    <string name="laude">Lodi</string>
+    <string name="medium">Ora media</string>
+    <string name="vesper">Vespri</string>
+    <string name="compline">Compieta</string>
+</resources>

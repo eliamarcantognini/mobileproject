@@ -22,7 +22,7 @@ import com.marca.mobileproject.Utils;
 public class SecretaryFragment extends Fragment {
 
     private static final String SECRETARY_PATH = "secretary/";
-    private static final String TITLE = "Secretary";
+    private final String TITLE = getString(R.string.secretary);
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(SECRETARY_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 

@@ -19,7 +19,6 @@ import com.marca.mobileproject.Utils;
 
 public class LiturgyFragment extends Fragment {
 
-    private static final String TITLE = "Liturgy";
     private WebView webView;
 
     @Nullable
@@ -36,7 +35,7 @@ public class LiturgyFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         FragmentActivity activity = getActivity();
         if (activity != null) {
-            Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.liturgy));
             webView = activity.findViewById(R.id.liturgy_webview);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.setVisibility(View.INVISIBLE);

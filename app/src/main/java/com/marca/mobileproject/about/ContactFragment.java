@@ -32,7 +32,6 @@ import com.marca.mobileproject.Utils;
 public class ContactFragment extends Fragment implements com.google.android.gms.maps.OnMapReadyCallback{
 
     private static final String INFO_PATH = "info/";
-    private static final String TITLE = "Contact";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(INFO_PATH);
     private TextView tel, cap, city, street, mobile;
     private ImageButton mobileBtn, telBtn, msgBtn;
@@ -72,7 +71,7 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
     @Override
     public void onResume() {
         super.onResume();
-        Utils.setToolbarTitle(requireActivity(), TITLE);
+        Utils.setToolbarTitle(requireActivity(), getString(R.string.contact));
     }
 
     @Override

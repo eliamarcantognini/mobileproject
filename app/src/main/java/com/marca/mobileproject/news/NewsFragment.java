@@ -38,7 +38,6 @@ import java.util.Objects;
 public class NewsFragment extends Fragment implements OnNewsListener{
 
     private static final String NEWS_PATH = "news/";
-    private static final String TITLE = "News";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(NEWS_PATH);
     private RecyclerView recyclerView;
     private NewsCardAdapter adapter;
@@ -59,7 +58,7 @@ public class NewsFragment extends Fragment implements OnNewsListener{
 
         if (activity != null) {
             initRecyclerView(activity);
-            Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.news));
             setHasOptionsMenu(true);
             db.orderByChild("date").addValueEventListener(new ValueEventListener() {
                 @Override

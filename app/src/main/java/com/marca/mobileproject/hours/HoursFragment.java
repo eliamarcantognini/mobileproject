@@ -19,7 +19,6 @@ import com.marca.mobileproject.Utils;
 
 public class HoursFragment extends Fragment{
 
-    private static final String TITLE = "Hours";
     private static BottomSheetFragment bottomSheetFragment;
     private WebView webView;
 
@@ -36,7 +35,7 @@ public class HoursFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
         FragmentActivity activity = getActivity();
         if (activity != null) {
-            Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.hours));
             activity.findViewById(R.id.bottom_sheet_btn).setOnClickListener(v -> {
                 bottomSheetFragment = new BottomSheetFragment();
                 bottomSheetFragment.show(activity.getSupportFragmentManager(), "sheet");

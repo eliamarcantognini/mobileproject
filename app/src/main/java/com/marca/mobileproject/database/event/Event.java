@@ -84,10 +84,15 @@ public class Event{
         this.eventDay = eventDay;
     }
 
+    /**
+     * Create an array of dummy Event with pattern [ Date, Time, Title n, An extraordinary event n ]
+     * @return
+     *      An array of dummy Events
+     */
     static Event[] getDummyData() {
         return new Event[]{
                 new Event(new GregorianCalendar(2020, 4, 22), "12:00",
-                        "Title 1", "An extraordinary event 1"),
+                        "Title 1", "An extraordinary event" +  "1"),
                 new Event(new GregorianCalendar(2020, 4, 28), "15:00",
                         "Title 2", "An extraordinary event 2"),
                 new Event(new GregorianCalendar(2020, 5, 1), "15:00",

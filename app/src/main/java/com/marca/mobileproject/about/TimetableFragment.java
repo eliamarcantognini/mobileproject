@@ -22,7 +22,7 @@ import com.marca.mobileproject.Utils;
 public class TimetableFragment extends Fragment {
 
     private static final String TIMETABLES_PATH = "timetables/";
-    private static final String TITLE = "Timetable";
+    private final String TITLE = getString(R.string.timetables);
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(TIMETABLES_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 

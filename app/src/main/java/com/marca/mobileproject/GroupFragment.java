@@ -13,8 +13,6 @@ import androidx.fragment.app.FragmentActivity;
 
 public class GroupFragment extends Fragment {
 
-    private static final String TITLE = "Group";
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -27,7 +25,7 @@ public class GroupFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         FragmentActivity activity = getActivity();
         if (activity != null) {
-            Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
+            Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.groups));
         }
     }
 }
