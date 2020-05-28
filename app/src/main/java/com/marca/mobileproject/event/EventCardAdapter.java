@@ -58,7 +58,7 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardHolder> {
      * Method called when a new item is added
      * @param newData the new list of events
      */
-    public void setData(List<Event> newData) {
+    void setData(List<Event> newData) {
         this.eventList.clear();
         this.eventList.addAll(newData);
         notifyDataSetChanged();

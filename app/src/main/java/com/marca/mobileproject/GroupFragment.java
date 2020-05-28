@@ -11,8 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import com.marca.mobileproject.R;
-
 public class GroupFragment extends Fragment {
 
     private static final String TITLE = "Group";

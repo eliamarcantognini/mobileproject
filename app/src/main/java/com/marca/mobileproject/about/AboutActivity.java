@@ -12,14 +12,12 @@ import androidx.viewpager2.widget.ViewPager2;
 
 public class AboutActivity extends AppCompatActivity {
 
-    private ViewPager2 viewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        viewPager = findViewById(R.id.pager);
-        viewPager.setAdapter(new ViewPagerAdapter(this));
+        ViewPager2 viewPager = findViewById(R.id.pager);
+        viewPager.setAdapter(new AboutViewPagerAdapter(this));
         Utils.setUpToolbar(this, "");
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);

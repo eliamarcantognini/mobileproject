@@ -53,7 +53,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardHolder> implem
         }
     };
 
-    public NewsCardAdapter(final OnNewsListener listener) {
+    NewsCardAdapter(final OnNewsListener listener) {
         this.listener = listener;
     }
 
@@ -79,7 +79,7 @@ public class NewsCardAdapter extends RecyclerView.Adapter<NewsCardHolder> implem
         return newsList.size();
     }
 
-    public void setData(List<News> newData) {
+    void setData(List<News> newData) {
         this.newsList.clear();
         this.newsList.addAll(newData);
         this.newsListFull.clear();

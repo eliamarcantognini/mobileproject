@@ -1,4 +1,4 @@
-package com.marca.mobileproject.liturgy;
+package com.marca.mobileproject.hours;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,18 +17,18 @@ import androidx.fragment.app.FragmentActivity;
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.Utils;
 
-public class LiturgyFragment extends Fragment {
+public class HoursFragment extends Fragment{
 
-    private static final String TITLE = "Liturgy";
+    private static final String TITLE = "Hours";
+    private static BottomSheetFragment bottomSheetFragment;
     private WebView webView;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.liturgy_fragment, container, false);
+        return inflater.inflate(R.layout.hours_fragment, container, false);
     }
-
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -37,19 +37,27 @@ public class LiturgyFragment extends Fragment {
         FragmentActivity activity = getActivity();
         if (activity != null) {
             Utils.setUpToolbar((AppCompatActivity) activity, TITLE);
-            webView = activity.findViewById(R.id.liturgy_webview);
+            activity.findViewById(R.id.bottom_sheet_btn).setOnClickListener(v -> {
+                bottomSheetFragment = new BottomSheetFragment();
+                bottomSheetFragment.show(activity.getSupportFragmentManager(), "sheet");
+            });
+            webView = activity.findViewById(R.id.hours_webview);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.setVisibility(View.INVISIBLE);
-            webView.setWebViewClient(new LiturgyWebClient());
-            webView.addJavascriptInterface(new LiturgyJavascriptInterface(), "CallToAnAndroidFunction");
-            webView.loadUrl("https://www.chiesacattolica.it/liturgia-del-giorno/");
+            webView.setWebViewClient(new HoursWebClient());
+            webView.addJavascriptInterface(new HoursJavascriptInterface(), "CallToAnAndroidFunction");
+            webView.loadUrl("https://www.chiesacattolica.it/la-liturgia-delle-ore/?ora=lodi-mattutine");
         }
     }
 
-    private class LiturgyJavascriptInterface {
+    private class HoursJavascriptInterface {
         @JavascriptInterface
         public void setVisible() {
             requireActivity().runOnUiThread(() -> webView.setVisibility(View.VISIBLE));
         }
+    }
+
+    static BottomSheetFragment getBottomSheetFragment() {
+        return bottomSheetFragment;
     }
 }

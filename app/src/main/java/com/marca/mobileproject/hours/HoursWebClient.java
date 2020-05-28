@@ -1,14 +1,15 @@
-package com.marca.mobileproject.liturgy;
+package com.marca.mobileproject.hours;
 
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class LiturgyWebClient extends WebViewClient {
+public class HoursWebClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         view.loadUrl(url);
         return true;
     }
+
     @Override
     public void onPageFinished(WebView webView, String url) {
         super.onPageFinished(webView, url);
@@ -21,6 +22,8 @@ public class LiturgyWebClient extends WebViewClient {
         webView.loadUrl("javascript:(function() { " +
                 "document.getElementsByClassName('cci-liturgia-menu')[0].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +
+                "document.getElementsByClassName('cci-liturgia-ore-menu')[0].style.display='none';})()");
+        webView.loadUrl("javascript:(function() { " +
                 "document.getElementsByClassName('cci_breadcrumb')[0].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +
                 "document.getElementsByClassName('sow-image-container')[0].style.display='none';})()");
@@ -31,9 +34,11 @@ public class LiturgyWebClient extends WebViewClient {
         webView.loadUrl("javascript:(function() { " +
                 "document.getElementsByClassName('sow-image-container')[3].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +
-                "document.getElementsByClassName('cci_content_single_share')[0].style.display='none';})()");
+                "document.getElementsByClassName('cci-liturgia-ore-share')[0].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +
                 "document.getElementById('BEWEB-searchChronology').style.display='none';})()");
+        webView.loadUrl("javascript:(function() { " +
+                "document.getElementsByClassName('row cci_footer')[0].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +
                 "document.getElementsByClassName('row cci_footer')[0].style.display='none';})()");
         webView.loadUrl("javascript:(function() { " +

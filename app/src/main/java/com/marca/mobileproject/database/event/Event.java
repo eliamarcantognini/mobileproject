@@ -2,7 +2,6 @@ package com.marca.mobileproject.database.event;
 
 import com.applandeo.materialcalendarview.EventDay;
 import com.marca.mobileproject.R;
-import com.marca.mobileproject.database.Converters;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -12,10 +11,7 @@ import androidx.room.PrimaryKey;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 @Entity(tableName = "events")
@@ -34,9 +30,9 @@ public class Event{
     private String description;
 
     @Ignore
-    EventDay eventDay;
+    private EventDay eventDay;
 
-    public Event(final Calendar day, final String time, final String title, final String description) {
+    public Event(final Calendar day, final String time, @NotNull final String title, final String description) {
         this.time = time;
         this.day = day;
         this.eventDay = new EventDay(day, R.drawable.ic_fiber_manual_record_24dp);
@@ -48,7 +44,8 @@ public class Event{
         return time;
     }
 
-    public void setTime(String time) {
+    @SuppressWarnings("unused")
+    public void setTime(final String time) {
         this.time = time;
     }
 
@@ -56,7 +53,8 @@ public class Event{
         return day;
     }
 
-    public void setDay(Calendar day) {
+    @SuppressWarnings("unused")
+    public void setDay(final Calendar day) {
         this.day = day;
     }
 
@@ -65,7 +63,7 @@ public class Event{
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(@NotNull final String title) {
         this.title = title;
     }
 
@@ -73,7 +71,7 @@ public class Event{
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -81,11 +79,12 @@ public class Event{
         return eventDay;
     }
 
-    public void setEventDay(EventDay eventDay) {
+    @SuppressWarnings("unused")
+    public void setEventDay(final EventDay eventDay) {
         this.eventDay = eventDay;
     }
 
-    public static Event[] getDummyData() {
+    static Event[] getDummyData() {
         return new Event[]{
                 new Event(new GregorianCalendar(2020, 4, 22), "12:00",
                         "Title 1", "An extraordinary event 1"),
@@ -113,16 +112,4 @@ public class Event{
                 ", eventDay=" + eventDay +
                 '}';
     }
-
-//    public long getDaytimeTimestamp() {
-////        String daytime = Converters.fromCalendarToTimestamp(this.day);
-//////        Integer.parseInt(this.time.substring(0, 2)), Integer.parseInt(this.time.substring(3, 5);
-////        Calendar date = null;
-////        date.set(Calendar.HOUR, Integer.parseInt(this.time.substring(0, 2)));
-////        date.set(Calendar.MINUTE, Integer.parseInt(this.time.substring(3, 5));
-//        return Timestamp.valueOf(
-//                new SimpleDateFormat("yyyy-MM-dd ")
-//                        .format(new Date(Long.parseLong(Converters.fromCalendarToTimestamp(this.day))))
-//                        .concat(this.time)).getTime();
-//    }
 }

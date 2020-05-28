@@ -30,6 +30,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.Utils;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -61,13 +63,13 @@ public class NewsFragment extends Fragment implements OnNewsListener{
             setHasOptionsMenu(true);
             db.orderByChild("date").addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
                     final GenericTypeIndicator<List<News>> t = new GenericTypeIndicator<List<News>>() {};
                     news = dataSnapshot.getValue(t);
                     adapter.setData(news);
                 }
                 @Override
-                public void onCancelled(DatabaseError error) {
+                public void onCancelled(@NotNull DatabaseError error) {
                     Log.d("ONCANCELLED", "Failed to read value.", error.toException());
                 }
             });

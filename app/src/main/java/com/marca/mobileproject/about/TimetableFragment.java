@@ -8,8 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -20,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.Utils;
-
 
 public class TimetableFragment extends Fragment {
 
@@ -58,111 +55,94 @@ public class TimetableFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Utils.setToolbarTitle(getActivity(), TITLE);
+        Utils.setToolbarTitle(requireActivity(), TITLE);
     }
 
 
+    /**
+     * Initialize value listeners.
+     * If time on Firebase backend change, then value in TextView is updated.
+     */
     private void initListeners() {
-        /**
-         * Monday time listener
-         */
+        // Monday
         db.child("monday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 monday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 monday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Tuesday time listener
-         */
+        // Tuesday
         db.child("tuesday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 tuesday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 tuesday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Wednesday time listener
-         */
+        // Wednesday
         db.child("wednesday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 wednesday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 wednesday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Thursday time listener
-         */
+        // Thursday
         db.child("thursday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 thursday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 thursday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Friday time listener
-         */
+        // Friday
         db.child("friday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 friday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 friday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Saturday time listener
-         */
+        // Saturday
         db.child("saturday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 saturday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 saturday.setText(R.string.time_placeholder);
             }
         });
-        /**
-         * Sunday time listener
-         */
+        // Sunday
         db.child("sunday").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 sunday.setText(s);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 sunday.setText(R.string.time_placeholder);

@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -22,13 +20,12 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.appbar.AppBarLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.marca.mobileproject.MainActivity;
+
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.Utils;
 
@@ -37,8 +34,6 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
     private static final String INFO_PATH = "info/";
     private static final String TITLE = "Contact";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(INFO_PATH);
-    private GoogleMap map;
-    private MapView mapView;
     private TextView tel, cap, city, street, mobile;
     private ImageButton mobileBtn, telBtn, msgBtn;
 
@@ -55,7 +50,7 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
         FragmentActivity activity = getActivity();
 
         if (activity != null) {
-            mapView = activity.findViewById(R.id.mapView);
+            MapView mapView = activity.findViewById(R.id.mapView);
             tel = activity.findViewById(R.id.telephone);
             cap = activity.findViewById(R.id.cap);
             city = activity.findViewById(R.id.city);
@@ -77,17 +72,16 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
     @Override
     public void onResume() {
         super.onResume();
-        Utils.setToolbarTitle(getActivity(), TITLE);
+        Utils.setToolbarTitle(requireActivity(), TITLE);
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        this.map = googleMap;
         final LatLng pos = new LatLng(4.4147757E01, 1.223517E01);
-        if (map != null) {
-            map.addMarker(new MarkerOptions().position(pos));
-            map.moveCamera(CameraUpdateFactory.newLatLng(pos));
-            map.animateCamera(CameraUpdateFactory.newCameraPosition(
+        if (googleMap != null) {
+            googleMap.addMarker(new MarkerOptions().position(pos));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(pos));
+            googleMap.animateCamera(CameraUpdateFactory.newCameraPosition(
                                                     CameraPosition.builder()
                                                             .target(pos)
                                                             .zoom(17)
@@ -98,9 +92,8 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
     }
 
     private void initListeners() {
-        /**
-         * Firebase listeners
-         */
+        // Firebase
+
         // CAP listener
         db.child("cap").addValueEventListener(new ValueEventListener() {
             @Override
@@ -167,25 +160,23 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
             }
         });
 
-        /**
-         * Buttons listeners
-         */
+        // Button listeners
         telBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + tel.getText()));
-            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
                 startActivity(intent);
             }
         });
         mobileBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + mobile.getText()));
-            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
                 startActivity(intent);
             }
         });
         msgBtn.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("sms:" + mobile.getText()))
                     .putExtra("sms_body", "Hi, my name is");
-            if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            if (intent.resolveActivity(requireActivity().getPackageManager()) != null) {
                 startActivity(intent);
             }
         });

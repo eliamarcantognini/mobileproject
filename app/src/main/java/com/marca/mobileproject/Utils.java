@@ -15,13 +15,12 @@ public class Utils {
     static final String EVENTFRAGMENT = "EventFragment";
     static final String GROUPFRAGMENT = "GroupFragment";
     static final String LITURGYFRAGMENT = "LiturgyFragment";
-    static final String HOURSFRAGMENT = "HoursFragment";
     static final String NEWSFRAGMENT = "NewsFragment";
     private static final String CONTACT = "Contact";
     private static final String SECRETARY = "Secretary";
     private static final String TIMETABLE = "Timetable";
 
-    public static void replaceFragment(final Fragment fragment, final String tag, final FragmentActivity activity){
+    static void replaceFragment(final Fragment fragment, final String tag, final FragmentActivity activity){
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
         transaction.replace(R.id.fragment_container, fragment, tag);
@@ -42,13 +41,10 @@ public class Utils {
         if (title.equals(CONTACT) || title.equals(SECRETARY) || title.equals(TIMETABLE)) {
             Objects.requireNonNull(activity.getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         } else {
-            /**
-             * Back listener
-             */
+            // Back listener for fragments of main activity
         toolbar.setNavigationIcon(R.drawable.ic_back_24dp);
-        toolbar.setNavigationOnClickListener(v -> {
-            activity.startActivity(new Intent(activity.getApplicationContext(), MainActivity.class));
-        });
+        toolbar.setNavigationOnClickListener(v -> activity.startActivity(new Intent(
+                activity.getApplicationContext(), MainActivity.class)));
         }
     }
 
@@ -56,5 +52,4 @@ public class Utils {
         Toolbar toolbar = activity.findViewById(R.id.app_bar);
         toolbar.setTitle(title);
     }
-
 }

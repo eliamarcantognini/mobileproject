@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-public class ViewPagerAdapter extends FragmentStateAdapter {
+public class AboutViewPagerAdapter extends FragmentStateAdapter {
 
-    public ViewPagerAdapter(@NonNull FragmentActivity fragment) {
+    AboutViewPagerAdapter(@NonNull FragmentActivity fragment) {
         super(fragment);
     }
 
@@ -22,7 +22,7 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new ContactFragment();
         }
-        return null;
+        return new TimetableFragment();
     }
 
     @Override

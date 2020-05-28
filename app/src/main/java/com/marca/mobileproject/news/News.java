@@ -1,6 +1,6 @@
 package com.marca.mobileproject.news;
 
-import java.util.Date;
+import org.jetbrains.annotations.NotNull;
 
 public class News {
 
@@ -8,20 +8,19 @@ public class News {
     private String title;
     private String description;
 
-    public News(final Long date, final String title, final String description) {
-        this.date = date;
-        this.title = title;
-        this.description = description;
-    }
-
+    /**
+     * No-argument constructor needed for Firebase.
+     */
     public News() {
 
     }
 
+    @SuppressWarnings("WeakerAccess")
     public Long getDate() {
         return date;
     }
 
+    @SuppressWarnings("unused")
     public void setDate(Long date) {
         this.date = date;
     }
@@ -42,6 +41,7 @@ public class News {
         this.description = description;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return "News{" +
