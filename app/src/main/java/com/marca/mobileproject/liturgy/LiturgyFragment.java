@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.marca.mobileproject.Utils;
 public class LiturgyFragment extends Fragment {
 
     private WebView webView;
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -36,6 +38,8 @@ public class LiturgyFragment extends Fragment {
         FragmentActivity activity = getActivity();
         if (activity != null) {
             Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.liturgy));
+            progressBar = activity.findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.VISIBLE);
             webView = activity.findViewById(R.id.liturgy_webview);
             webView.getSettings().setJavaScriptEnabled(true);
             webView.setVisibility(View.INVISIBLE);
@@ -48,7 +52,10 @@ public class LiturgyFragment extends Fragment {
     private class LiturgyJavascriptInterface {
         @JavascriptInterface
         public void setVisible() {
-            requireActivity().runOnUiThread(() -> webView.setVisibility(View.VISIBLE));
+            requireActivity().runOnUiThread(() -> {
+                webView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+            });
         }
     }
 }

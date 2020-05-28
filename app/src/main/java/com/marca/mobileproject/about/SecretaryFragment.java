@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import com.marca.mobileproject.Utils;
 public class SecretaryFragment extends Fragment {
 
     private static final String SECRETARY_PATH = "secretary/";
-    private final String TITLE = getString(R.string.secretary);
+    private ProgressBar progressBar;
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(SECRETARY_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
@@ -45,6 +46,10 @@ public class SecretaryFragment extends Fragment {
             friday = activity.findViewById(R.id.fridayTextViewSecretary);
             saturday = activity.findViewById(R.id.saturdayTextViewSecretary);
             sunday = activity.findViewById(R.id.sundayTextViewSecretary);
+            progressBar = activity.findViewById(R.id.progressBar);
+            if (progressBar.getVisibility() == View.INVISIBLE) {
+                progressBar.setVisibility(View.VISIBLE);
+            }
             initListeners();
 
         }
@@ -53,7 +58,7 @@ public class SecretaryFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Utils.setToolbarTitle(requireActivity(), TITLE);
+        Utils.setToolbarTitle(requireActivity(), getString(R.string.secretary));
     }
 
     /**
@@ -139,6 +144,9 @@ public class SecretaryFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 sunday.setText(s);
+                if (progressBar.getVisibility() == View.VISIBLE) {
+                    progressBar.setVisibility(View.GONE);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

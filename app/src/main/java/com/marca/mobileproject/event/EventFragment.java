@@ -6,6 +6,7 @@ import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +31,6 @@ public class EventFragment extends Fragment {
     private EventViewModel eventViewModel;
     private EventCardAdapter adapter;
     private FloatingActionButton fab;
-
 
     @Nullable
     @Override

@@ -9,14 +9,14 @@
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="0dp"
         android:gravity="top"
+        app:eventsEnabled="true"
         app:headerColor="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:eventsEnabled="true"
-        android:elevation="8dp"
         app:todayLabelColor="@color/primaryDarkColor">
 
     </com.applandeo.materialcalendarview.CalendarView>
@@ -40,5 +40,6 @@
         app:layout_constraintStart_toStartOf="parent">
         <include layout="@layout/fab_love" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

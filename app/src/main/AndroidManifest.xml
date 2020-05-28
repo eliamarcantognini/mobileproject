@@ -11,12 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".hours.HoursActivity" />
+        <activity android:name=".hours.HoursActivity"
+            android:label="@string/title_hours_activity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".about.AboutActivity"
             android:label="@string/title_activity_about"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:documentLaunchMode="intoExisting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

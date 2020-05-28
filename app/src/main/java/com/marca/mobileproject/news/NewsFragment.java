@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -39,6 +40,7 @@ public class NewsFragment extends Fragment implements OnNewsListener{
 
     private static final String NEWS_PATH = "news/";
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(NEWS_PATH);
+    private ProgressBar progressBar;
     private RecyclerView recyclerView;
     private NewsCardAdapter adapter;
     private List<News> news;
@@ -59,6 +61,8 @@ public class NewsFragment extends Fragment implements OnNewsListener{
         if (activity != null) {
             initRecyclerView(activity);
             Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.news));
+            progressBar = activity.findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.VISIBLE);
             setHasOptionsMenu(true);
             db.orderByChild("date").addValueEventListener(new ValueEventListener() {
                 @Override
@@ -66,6 +70,7 @@ public class NewsFragment extends Fragment implements OnNewsListener{
                     final GenericTypeIndicator<List<News>> t = new GenericTypeIndicator<List<News>>() {};
                     news = dataSnapshot.getValue(t);
                     adapter.setData(news);
+                    progressBar.setVisibility(View.GONE);
                 }
                 @Override
                 public void onCancelled(@NotNull DatabaseError error) {

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import com.marca.mobileproject.Utils;
 public class TimetableFragment extends Fragment {
 
     private static final String TIMETABLES_PATH = "timetables/";
-    private final String TITLE = getString(R.string.timetables);
+    private ProgressBar progressBar;
     private final DatabaseReference db = FirebaseDatabase.getInstance().getReference(TIMETABLES_PATH);
     private TextView monday, tuesday, wednesday, thursday, friday, saturday, sunday;
 
@@ -45,8 +46,8 @@ public class TimetableFragment extends Fragment {
             friday = activity.findViewById(R.id.fridayTextView);
             saturday = activity.findViewById(R.id.saturdayTextView);
             sunday = activity.findViewById(R.id.sundayTextView);
-//            Toolbar toolbar = activity.findViewById(R.id.app_bar);
-//            toolbar.setTitle(TITLE);
+            progressBar = activity.findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.VISIBLE);
             initListeners();
 
         }
@@ -55,7 +56,7 @@ public class TimetableFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        Utils.setToolbarTitle(requireActivity(), TITLE);
+        Utils.setToolbarTitle(requireActivity(), getString(R.string.timetables));
     }
 
 
@@ -142,6 +143,7 @@ public class TimetableFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 final String s = dataSnapshot.getValue(String.class);
                 sunday.setText(s);
+                progressBar.setVisibility(View.GONE);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

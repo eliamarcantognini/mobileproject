@@ -37,6 +37,7 @@ public class HoursActivity extends AppCompatActivity {
         final Button button = findViewById(R.id.bottom_sheet_btn);
         final BottomSheetFragment bottomSheetFragment = HoursFragment.getBottomSheetFragment();
         webView.setVisibility(View.INVISIBLE);
+        findViewById(R.id.progressBar).setVisibility(View.VISIBLE);
 
         switch (view.getId()) {
             case R.id.invitatory:

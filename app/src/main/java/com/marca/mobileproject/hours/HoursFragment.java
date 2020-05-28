@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.marca.mobileproject.Utils;
 public class HoursFragment extends Fragment{
 
     private static BottomSheetFragment bottomSheetFragment;
+    private ProgressBar progressBar;
     private WebView webView;
 
     @Nullable
@@ -36,6 +38,8 @@ public class HoursFragment extends Fragment{
         FragmentActivity activity = getActivity();
         if (activity != null) {
             Utils.setUpToolbar((AppCompatActivity) activity, getString(R.string.hours));
+            progressBar = activity.findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.VISIBLE);
             activity.findViewById(R.id.bottom_sheet_btn).setOnClickListener(v -> {
                 bottomSheetFragment = new BottomSheetFragment();
                 bottomSheetFragment.show(activity.getSupportFragmentManager(), "sheet");
@@ -52,7 +56,11 @@ public class HoursFragment extends Fragment{
     private class HoursJavascriptInterface {
         @JavascriptInterface
         public void setVisible() {
-            requireActivity().runOnUiThread(() -> webView.setVisibility(View.VISIBLE));
+            requireActivity().runOnUiThread(() -> {
+                webView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
+            });
+
         }
     }
 
