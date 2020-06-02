@@ -11,6 +11,9 @@ import android.widget.Button;
 
 import com.marca.mobileproject.R;
 
+/**
+ * Hours activity.
+ */
 public class HoursActivity extends AppCompatActivity {
 
     @Override

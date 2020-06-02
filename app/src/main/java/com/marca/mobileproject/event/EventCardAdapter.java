@@ -1,5 +1,6 @@
 package com.marca.mobileproject.event;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.database.event.Event;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
+/**
+ * The EventCard adapter, used by RecyclerView.
+ */
 public class EventCardAdapter extends RecyclerView.Adapter<EventCardHolder> {
-
 
     private List<Event> eventList = new ArrayList<>();
 
@@ -44,9 +49,30 @@ public class EventCardAdapter extends RecyclerView.Adapter<EventCardHolder> {
     @Override
     public void onBindViewHolder(@NonNull EventCardHolder holder, int position) {
         final Event currentEvent = eventList.get(position);
+        final SimpleDateFormat sdf = new SimpleDateFormat("dd MM yyyy", Locale.getDefault());
+        final String date = sdf.format(currentEvent.getEventDay().getCalendar().getTime());
         holder.title.setText(currentEvent.getTitle());
         holder.description.setText(currentEvent.getDescription());
         holder.time.setText(currentEvent.getTime());
+        holder.date.setText(date);
+        holder.shareBtn.setOnClickListener(v -> {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    v.getContext().getString(R.string.news_title) + " "
+                            + currentEvent.getTitle() + "\n"
+                            + v.getContext().getString(R.string.news_description) + " " +
+                            currentEvent.getDescription() +
+                            "\n" + v.getContext().getString(R.string.news_date) + " " +
+                            date +
+                            "\n" + v.getContext().getString(R.string.news_time) + " " +
+                            currentEvent.getTime());
+
+            sendIntent.setType("text/plain");
+            if (v.getContext() != null &&
+                    sendIntent.resolveActivity(v.getContext().getPackageManager()) != null) {
+                v.getContext().startActivity(Intent.createChooser(sendIntent, null));
+            }
+        });
     }
 
     @Override

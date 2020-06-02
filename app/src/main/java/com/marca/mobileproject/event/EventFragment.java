@@ -27,6 +27,9 @@ import com.marca.mobileproject.database.event.EventViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Event view fragment
+ */
 public class EventFragment extends Fragment {
 
     private EventViewModel eventViewModel;
@@ -46,7 +49,7 @@ public class EventFragment extends Fragment {
         FragmentActivity activity = getActivity();
 
         if (activity != null) {
-            ArrayList<EventDay> dayEvents = new ArrayList<>();
+            ArrayList<EventDay> fullEventDays = new ArrayList<>();
             CalendarView calendarView = activity.findViewById(R.id.calendarView);
             fab = activity.findViewById(R.id.fab_fav);
             Utils.setUpToolbar((AppCompatActivity) activity, activity.getString(R.string.event));
@@ -56,7 +59,6 @@ public class EventFragment extends Fragment {
             recyclerView.setAdapter(adapter);
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(activity);
             recyclerView.setLayoutManager(layoutManager);
-
 
             // Calendar day listener
             calendarView.setOnDayClickListener(eventDay -> eventViewModel
@@ -76,9 +78,9 @@ public class EventFragment extends Fragment {
             eventViewModel = new ViewModelProvider.AndroidViewModelFactory(activity.getApplication()).create(EventViewModel.class);
             eventViewModel.getEvents().observe(activity, events -> {
                     for (Event event : events) {
-                        dayEvents.add(event.getEventDay());
+                        fullEventDays.add(event.getEventDay());
                     }
-                    calendarView.setEvents(dayEvents);
+                    calendarView.setEvents(fullEventDays);
             });
         }
     }

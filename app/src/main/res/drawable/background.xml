@@ -14,4 +14,11 @@
         </shape>
     </item>
 
+    <item
+        android:top="660dp">
+        <shape android:shape="rectangle" >
+            <solid android:color="@color/common_google_signin_btn_text_light_disabled" />
+        </shape>
+    </item>
+
 </layer-list>

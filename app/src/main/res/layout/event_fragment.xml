@@ -14,9 +14,10 @@
 
     <com.applandeo.materialcalendarview.CalendarView
         android:id="@+id/calendarView"
+        app:type="one_day_picker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="0dp"
+        android:elevation="8dp"
         android:gravity="top"
         app:eventsEnabled="true"
         app:headerColor="@color/primaryColor"

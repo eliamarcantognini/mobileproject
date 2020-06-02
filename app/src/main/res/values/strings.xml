@@ -54,4 +54,5 @@
     <string name="vesper">Vesper</string>
     <string name="compline">Compline</string>
     <string name="title_hours_activity" translatable="false">HoursActivity</string>
+    <string name="date">Date</string>
 </resources>

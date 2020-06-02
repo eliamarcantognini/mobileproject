@@ -3,12 +3,16 @@ package com.marca.mobileproject.liturgy;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+/**
+ * WebClient used to remove all images and menu useless in the WebView.
+ */
 public class LiturgyWebClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
         view.loadUrl(url);
         return true;
     }
+
     @Override
     public void onPageFinished(WebView webView, String url) {
         super.onPageFinished(webView, url);

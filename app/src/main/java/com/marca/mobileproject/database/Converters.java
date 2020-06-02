@@ -5,6 +5,9 @@ import androidx.room.TypeConverter;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Converters for EventRoomDatabase instance.
+ */
 public class Converters {
     @TypeConverter
     public static Calendar fromTimestampToCalendar(String value) {

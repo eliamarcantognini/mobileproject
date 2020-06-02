@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 class EventRepository {
+
     private EventDAO eventDAO;
     private LiveData<List<Event>> events;
 

@@ -3,6 +3,9 @@ package com.marca.mobileproject.hours;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+/**
+ * WebClient used to remove all images and menu useless in the WebView.
+ */
 public class HoursWebClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {

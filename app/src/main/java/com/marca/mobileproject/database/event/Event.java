@@ -14,18 +14,33 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+/**
+ * Events table
+ */
 @Entity(tableName = "events")
 public class Event{
 
 
+    /**
+     * The date of the event.
+     */
     @ColumnInfo(name = "calendar_day")
     private Calendar day;
+    /**
+     * The time of the event.
+     */
     @ColumnInfo(name = "time")
     private String time;
+    /**
+     * The title of the event.
+     */
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "title")
     private String title;
+    /**
+     * The description of the event.
+     */
     @ColumnInfo(name = "description")
     private String description;
 

@@ -18,6 +18,9 @@ import androidx.fragment.app.FragmentActivity;
 import com.marca.mobileproject.R;
 import com.marca.mobileproject.Utils;
 
+/**
+ * Hours fragment.
+ */
 public class HoursFragment extends Fragment{
 
     private static BottomSheetFragment bottomSheetFragment;
@@ -64,6 +67,11 @@ public class HoursFragment extends Fragment{
         }
     }
 
+    /**
+     *
+     * @return
+     *      BottomSheetFragment
+     */
     static BottomSheetFragment getBottomSheetFragment() {
         return bottomSheetFragment;
     }
