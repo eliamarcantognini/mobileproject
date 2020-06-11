@@ -36,6 +36,7 @@ public class Utils {
 
         if (fragment instanceof HomeFragment) {
             transaction.disallowAddToBackStack();
+//            transaction.addToBackStack(null);
         } else {
             transaction.addToBackStack(HOMEFRAGMENT);
         }

@@ -61,7 +61,6 @@ public class ContactFragment extends Fragment implements com.google.android.gms.
 
             initListeners();
 
-
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(this);
             mapView.onResume();
